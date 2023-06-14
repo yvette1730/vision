@@ -530,6 +530,50 @@ def show_dprime(Y, Yh, *args, **kwargs):
     plt.legend()
     mkfig("dprime.png")
 
+#def embedding_accuracy(
+    #to do
+        #normalize the embeddings and centers 
+        #compute cosine similarity between the embedding and center 
+        #compute the accuracy by comparing the predicted labels to the truth label
+
+
+    #walk through 
+        #obtain arcface embeddings 
+        #compute the distance or similarity 
+            #calculate the distance between each pair of embedded vectors (euclidiean distance?) 
+        #determine threshold 
+        #compare embeddings 
+        #caluculate accuracy
+
+def embedding_accuracy(embeddings, centers, labels, threshold) 
+    num_samples = len(embeddings)
+    total_Correct = 0
+
+    for i in range(num_samples): 
+        for j in range(i+1, num_samples): 
+            similarity = np.dot(embeddings[i], embeddings[j]/np.linalg.norm(embeddings[i] * np.linalg.norm(embeddings[j])))
+
+            if similarity > threshold: 
+                prediction = 1 #this would signify a match 
+            else: 
+                prediction = 0 #this would signify they did not match 
+
+
+            if prediction == labels[i][j]:
+                total_Correct +=1
+
+    accuracy = total_Correct/num_samples
+    return accuracy 
+
+
+def accuracy(output, target, cfg)
+    if cfg.LOSS.BODY == 'arcface' or cfg.LOSS.BODY == 'arc':
+        return emedding_accuracy(embeddings, centers, labels, threshold) 
+    elif cfg.LOSS.BODY == 'CE':
+        return show_accuracy(Y, Yh, centers)   
+    else: 
+        return -1
+
 
 PLOTS = {
     "LOSS": show_loss,
