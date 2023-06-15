@@ -546,23 +546,35 @@ def show_dprime(Y, Yh, *args, **kwargs):
         #caluculate accuracy
 
 def embedding_accuracy(embeddings, centers, labels, threshold) 
-    num_samples = len(embeddings)
-    total_Correct = 0
+    #num_samples = len(embeddings)
+    #total_Correct = 0
 
-    for i in range(num_samples): 
-        for j in range(i+1, num_samples): 
-            similarity = np.dot(embeddings[i], embeddings[j]/np.linalg.norm(embeddings[i] * np.linalg.norm(embeddings[j])))
+    #for i in range(num_samples): 
+        #for j in range(i+1, num_samples): 
+            #similarity = np.dot(embeddings[i], embeddings[j]/np.linalg.norm(embeddings[i] * np.linalg.norm(embeddings[j])))
 
-            if similarity > threshold: 
-                prediction = 1 #this would signify a match 
-            else: 
-                prediction = 0 #this would signify they did not match 
+            #if similarity > threshold: 
+                #prediction = 1 #this would signify a match 
+            #else: 
+                #prediction = 0 #this would signify they did not match 
 
 
-            if prediction == labels[i][j]:
-                total_Correct +=1
+            #if prediction == labels[i][j]:
+                #total_Correct +=1
 
-    accuracy = total_Correct/num_samples
+    #accuracy = total_Correct/num_samples
+    #return accuracy
+
+    centers = trainer.criterion.weight
+    norm = np.linalg.norm 
+
+    similarity = lambda x: np.array([np.dot(norm(x), norm(c)) for c in centers])
+
+    prediction = lambda x: np.argmax(similarity(x))
+    correct = lambda x, y: predictions(x) == y 
+
+    total = [correct(x, y) for x, y in zip(embeddings, labels)]
+    accuracy = sum(total) / len(total) 
     return accuracy 
 
 
