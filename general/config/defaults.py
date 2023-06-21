@@ -63,6 +63,7 @@ _C.LOSS.ARC = CN(
         L6_SCALE=0,
         NCLASSES=5,
         EMBED_DIM=64,
+        SCALE=1,
     ),
 )
 

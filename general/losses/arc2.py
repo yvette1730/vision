@@ -10,7 +10,7 @@ import torch.nn.functional as F
 class ArcFace(torch.nn.Module):
     """ArcFace (https://arxiv.org/pdf/1801.07698v1.pdf):"""
 
-    def __init__(self, s=64.0, margin=0.5):
+    def __init__(self, s=cfg.LOSS.ARC.SCALE, margin=0.5):
         super(ArcFace, self).__init__()
         self.scale = s
         self.cos_m = math.cos(margin)

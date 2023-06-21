@@ -545,7 +545,7 @@ def show_dprime(Y, Yh, *args, **kwargs):
         #compare embeddings 
         #caluculate accuracy
 
-def embedding_accuracy(embeddings, centers, labels, threshold) 
+#def embedding_accuracy(embeddings, centers, labels, threshold) 
     #num_samples = len(embeddings)
     #total_Correct = 0
 
@@ -578,13 +578,13 @@ def embedding_accuracy(embeddings, centers, labels, threshold)
     return accuracy 
 
 
-def accuracy(output, target, cfg)
-    if cfg.LOSS.BODY == 'arcface' or cfg.LOSS.BODY == 'arc':
-        return emedding_accuracy(embeddings, centers, labels, threshold) 
-    elif cfg.LOSS.BODY == 'CE':
-        return show_accuracy(Y, Yh, centers)   
-    else: 
-        return -1
+#def accuracy(output, target, cfg)
+    #if cfg.LOSS.BODY == 'arcface' or cfg.LOSS.BODY == 'arc':
+        #return emedding_accuracy(embeddings, centers, labels, threshold) 
+    #elif cfg.LOSS.BODY == 'CE':
+        #return show_accuracy(Y, Yh, centers)   
+    #else: 
+        #return -1
 
 
 PLOTS = {

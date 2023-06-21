@@ -33,7 +33,7 @@ SOLVER:
 
 LOSS: 
   BODY: "ARC" 
-
+  SCALE: 1
 EXP:
   TRAIN: True
   TEST: True
@@ -42,4 +42,3 @@ EXP:
   - "PCA"
   - "CONFUSION"
   - "DPRIME"
-  - "TSNE"
